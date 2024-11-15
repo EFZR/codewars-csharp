@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace ReverseWordKata;
+﻿namespace ReverseWordKata;
 
 public class ReverseWord
 {

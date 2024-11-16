@@ -4,15 +4,31 @@ public static class FindTheOddIntSolution
 {
     public static int findOddSolution(int[] seq)
     {
-		for(int i = 0; i < seq.Length; i++)
-		{
-			var result = seq.Select((n, index) => seq[i] = n).ToList();
-			if (result.Count % 2 == 0)
-			{
-				return seq[i];
-			}
-		}
-        return -1;
+        // Usamos un diccionario para contar las ocurrencias de cada número
+        var counts = new Dictionary<int, int>();
+
+        foreach (var num in seq)
+        {
+            if (counts.ContainsKey(num))
+            {
+                counts[num]++;
+            }
+            else
+            {
+                counts[num] = 1;
+            }
+        }
+
+        // Buscamos el número con un conteo impar
+        foreach (var pair in counts)
+        {
+            if (pair.Value % 2 != 0)
+            {
+                return pair.Key;
+            }
+        }
+
+        return -1; // Retornar -1 si no se encuentra (aunque no debería ocurrir)
     }
 }
 
